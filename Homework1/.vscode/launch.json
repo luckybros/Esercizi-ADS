@@ -1,6 +1,13 @@
 {
     "configurations": [
         {
+            "type": "java",
+            "name": "Soluzione",
+            "request": "launch",
+            "mainClass": "Esercizio2.src.Soluzione",
+            "projectName": "Homework1_15697485"
+        },
+        {
             "name": "C/C++: clang compilare ed eseguire il debug del file attivo",
             "type": "cppdbg",
             "request": "launch",
