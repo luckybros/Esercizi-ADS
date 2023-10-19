@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "C/C++: clang compilare ed eseguire il debug del file attivo",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang compila il file attivo"
+        }
+    ],
+    "version": "2.0.0"
+}
