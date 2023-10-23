@@ -65,7 +65,10 @@ void Solution::Merge(int array[], int p, int q, int r) {
         } else {
             array[k] = highHalf[j];
             j++;
-            numInversions++;
+            // elemento da spostare in pos n1 + j, 
+            // deve arrivare in posizione i + j
+            // n di passi n1 + j - (i + j)
+            numInversions += n1 - i;
         }
         k++;
     }
