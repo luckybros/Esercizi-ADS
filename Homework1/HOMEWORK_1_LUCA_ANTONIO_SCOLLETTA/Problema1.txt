@@ -1,0 +1,134 @@
+// Esercizio 1: Luca Antonio Scolletta
+// Viene applicata il Merge Sort per ordinare l'array,
+// in modo da contare le inversioni applicate. La complessità
+// temporale è quella relativa a quest'algoritmo, ovvero
+// O(nlogn). 
+// L'algoritmo richiama due volte se stesso, e la complessità
+// dei sottoproblemi è la metà di quella del problema originale:
+// si ha una ricorrenza del tipo 
+// T(n) = 2T(n/2) + cn, dove cn è il costo relativo alla suddivisione
+// del sottoproblema, che essendo un semplice calcolo di un floor
+// è costante. Invece, il tempo per ricombinare le soluzioni è lineare
+// poichè si tratta di ripopolare un array, di conseguenza si ha 
+// Possiamo calcolare la complessità usando il metodo dell'esperto, dove
+// a = 2 e b = 2
+// f(n) = theta(n), n^(logba) = n
+// quindi T(n) = theta(nlogn)
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Solution {
+private:
+    int numInversions;
+public:
+    Solution() {numInversions = 0;}
+
+    int getNumInversions() {return numInversions;}
+
+    void setNumInversions(int numInversions) {this->numInversions = numInversions;}
+
+    void Merge(int array[], int p, int q, int r) {
+        int n1 = q - p + 1;
+        int n2 = r - q;
+
+        int lowHalf[n1];
+        int highHalf[n2];
+
+        int k = p;
+        int i, j;
+
+        for (i = 0; i < n1; i++) {
+            lowHalf[i] = array[k];
+            k++;
+        }
+
+        for (j = 0; j < n2; j++) {
+            highHalf[j] = array[k];
+            k++;
+        }
+
+        k = p;
+        i = j = 0;
+
+        while (i < n1 && j < n2) {
+            if (lowHalf[i] <= highHalf[j]) {
+                array[k] = lowHalf[i];
+                i++;
+            } else {
+                array[k] = highHalf[j];
+                j++;
+                // elemento da spostare in pos n1 + j, 
+                // deve arrivare in posizione i + j
+                // n di passi n1 + j - (i + j)
+                numInversions += n1 - i;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            array[k] = lowHalf[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            array[k] = highHalf[j];
+            j++;
+            k++;
+        }
+    }
+
+    void MergeSort(int array[], int p, int r) {
+        if (r > p) {
+        int q = floor((p + r) / 2);
+        MergeSort(array, p, q);
+        MergeSort(array, q + 1, r);
+        Merge(array, p, q, r);
+        }
+    };
+};
+
+int main() {
+    int i;
+
+    Solution soluzione;
+    int len1 = 5;
+    int array1[] = {9, 1, 0, 5, 4};
+    soluzione.MergeSort(array1, 0, len1-1);
+    cout << endl;
+    cout << soluzione.getNumInversions();
+    soluzione.setNumInversions(0);
+
+    int len2 = 3;
+    int array2[] = {1, 2, 3};
+    soluzione.MergeSort(array2, 0, len2-1);
+    cout << endl;
+    cout << soluzione.getNumInversions();
+    soluzione.setNumInversions(0);
+
+    int len3 = 5;
+    int array3[] = {2, 4, 1, 3, 5};
+    soluzione.MergeSort(array3, 0, len3-1);
+    cout << endl;
+    cout << soluzione.getNumInversions();
+    soluzione.setNumInversions(0);
+
+    int len4 = 4;
+    int array4[] = {8, 4, 2, 1};
+    soluzione.MergeSort(array4, 0, len4-1);
+    cout << endl;
+    cout << soluzione.getNumInversions();
+    soluzione.setNumInversions(0);
+
+    int len5= 5;
+    int array5[] = {1, 20, 6, 4, 5};
+    soluzione.MergeSort(array5, 0, len5-1);
+    cout << endl;
+    cout << soluzione.getNumInversions();
+    soluzione.setNumInversions(0);
+
+    // expected output: 6, 0, 3, 6, 5
+    return 0;
+}

@@ -1,0 +1,3 @@
+PROBLEMA
+Si consideri un labirinto L dato come matrice binaria N*N di blocchi in cui il blocco sorgente è il blocco più in alto a sinistra, cioè L[0][0] e il blocco di destinazione è il blocco più in basso a destra, cioè L[N-1][N-1] . Un topo parte da L[0][0] e deve raggiungere la destinazione. Il topo può muoversi solo in due direzioni: in avanti e in basso. Nella matrice, 0 significa che il blocco è un vicolo cieco e 1 significa che il blocco può essere utilizzato nel percorso. 
+Si scriva un algoritmo di Backtracking per determinare un percorso dalla sorgente alla destinazione. Il percorso è scritto in una nuova matrice S delle stesse dimensioni di L, in cui la cella è ‘1’se fa parte del percorso, 0 altrimenti.
