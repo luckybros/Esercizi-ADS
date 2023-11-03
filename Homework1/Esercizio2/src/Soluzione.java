@@ -11,9 +11,6 @@ public class Soluzione {
             if(min < name.length()) 
                 min = name.length();
         }
-
-        
-        
         return null;
     }
 

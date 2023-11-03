@@ -12,9 +12,11 @@ class Solution {
     Solution() {righe = colonne = nPassi = 0; isFinished = false; }
 
     void Backtracking(int solution[N][N], int path[N][N]) {
-        if(IsSolution())
+        if(IsSolution()) {
+            ProcessSolution(solution);
             return;
-
+        }
+            
         else {
             MakeMove(solution, path);
             Backtracking(solution, path);
@@ -58,6 +60,14 @@ class Solution {
         }
     }
 
+    void ProcessSolution(int solution[N][N]) {
+        for (int i = 0; i < N; i++) { 
+            for (int j = 0; j < N; j++) { 
+                cout << solution[i][j] << " "; 
+            } 
+            cout << endl; 
+        } 
+    }
 };
 
 int main() {
@@ -78,11 +88,4 @@ int main() {
     };
 
     soluzione.Backtracking(solution, path);
-
-    for (int i = 0; i < N; i++) { 
-        for (int j = 0; j < N; j++) { 
-            cout << solution[i][j] << " "; 
-        } 
-        cout << endl; 
-    } 
 }
