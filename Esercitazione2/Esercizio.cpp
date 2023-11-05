@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-#define N 4
-
 class Solution {
     private:
     int righe,colonne,nPassi;

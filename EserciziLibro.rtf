@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16440\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Esercizi libro\
+-11.2-2\
+PUSH: adds an element at the beginning of the list\
+Pu\'f2 essere implementato con una semplice list insert\
+	PUSH(L, x)\
+	next[x] = head[L]\
+	head[L] = x\
+POP: remove the first element of the list\
+	POP(L)\
+	if STACK_EMPTY then error \'93underflow\'94\
+	else	x = head[L]\
+	head[L] = next[head[L]]\
+	return x (nel caso volessimo restituire l\'92elemento rimosso)\
+\
+Both operations takes O(1) time because the don\'92t do loops\
+\
+-11.2-2\
+Queue with a singly linked \
+	ENQUEUE(Q, x)\
+	if QUEUE_EMPTY then head[Q] = x\
+	else\
+	next[tail[Q]] = x\
+	tail[Q] = x\
+	next[X] = NIL\
+\
+	DEQUEUE(Q)\
+	if QUEUE_EMPTY then error \'93underflow\'94\
+	else\
+	x = head[Q]\
+	if(head[Q] == tail[Q])\
+		tail[Q] = NIL\
+	head[Q] = next[head[Q]]\
+	return x\
+\
+-11.3-1\
+Multiple arrays\
+L = 2 (first element\'92s index)\
+[1	2	3	4	5	6	7	]	index\
+[	3	4	5	6	7  	/	]	next\
+[	13	4	8	19	5	11	]	key\
+[	/	2	3	4	5  	6	]	prev\
+\
+Single array\
+L = 1\
+[1	2	3	4	5	6	7	8	9	10	11	12	1]\
+[13	4	/	4	7	1	8	10	4	19	13	7	5]\
+\
+\
+-11.4-3\
+PrintTree(Node Root)\
+	if(Root = NIL)\
+		return;\
+	print(Root)\
+	PrintTree(Root.left)\
+	PrintTree(Root.right)						\
+\
+-12.1-1\
+In una tabella ad indirizzamento diretto di grandezza m l\'92elemento maggiore \'e8 legato alla chiave di posizione maggiore, scriviamo quindi un metodo che restituisca il primo elemento non nullo a partire dalla chiave pi\'f9 grande. Ovvimamente la complessit\'e0 nel caso peggiore \'e8 O(n) poich\'e9 corrisponde al caso in cui non ci sono elementi nella tabella\
+	\
+	MaximumTable(Table H)\
+		return Maximum(H, m-1)\
+\
+	Maximum(H, l)\
+		if l < 0\
+			return nil\
+		else if DirectAccessSearch(H, l) != nil \
+			return l\
+		else if\
+			Maximum(H, l-1)}

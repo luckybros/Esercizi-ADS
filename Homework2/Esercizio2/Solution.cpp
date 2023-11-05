@@ -21,9 +21,8 @@ int Solution::FindNQueens() {
 }
 
 void Solution::Backtracking(int colons) {
-    if(IsSolution(colons)) {
+    if(IsSolution(colons)) 
         return;
-    }
     else 
         for(int i = 0; i < dimension; i++)
             if(MakeMove(i, colons)) {
