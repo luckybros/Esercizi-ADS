@@ -10,7 +10,7 @@ class Solution {
     bool isFinished;
 
     public:
-    Solution(int);
+    void setN(int);
     int FindNQueens();
     void Backtracking(int);
     bool IsSolution(int);

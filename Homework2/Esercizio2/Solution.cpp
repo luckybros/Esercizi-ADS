@@ -1,6 +1,6 @@
 #include "Solution.h"
 
-Solution::Solution(int dimension) {
+void Solution::setN(int dimension) {
     this->dimension = dimension;
     numSolutions = 0;
     chessboard = new int*[dimension];

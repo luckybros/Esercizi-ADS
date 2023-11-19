@@ -1,8 +1,27 @@
 #include "Solution.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
-int main(){
-    Solution solution(8);
+int main() {
+    std::ifstream inputFile("input.txt"); 
+    int n;
 
-    //cout << solution.FindNQueens();
-    cout << solution.FindNQueens() << endl;
+    if (!inputFile.is_open()) {
+        std::cerr << "Impossibile aprire il file di input." << std::endl;
+        return 1; 
+    }
+
+    Solution solution;
+
+    while (inputFile >> n) {
+        if (n == -1) 
+            break;
+        
+        solution.setN(n); 
+        int result = solution.FindNQueens();
+        std::cout << "N = " << n << ": " << result << std::endl;
+    }
+    inputFile.close(); 
+    return 0; 
 }
